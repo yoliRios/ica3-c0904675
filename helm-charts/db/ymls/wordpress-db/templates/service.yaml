@@ -1,0 +1,20 @@
+---
+# Source: wordpress-db/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: wp-database-service
+  labels:
+    app: wp-database-app
+    env: dev
+    id: c0904675
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+  selector:
+    app: wp-database-app
+    env: dev
+    id: c0904675

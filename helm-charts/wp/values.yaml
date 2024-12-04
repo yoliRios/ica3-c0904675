@@ -1,0 +1,20 @@
+wp:
+  name: wp-wordpress
+  labels:
+    id: c0904675
+    app: wp-wordpress-app
+    env: dev
+  image:
+    repository: wordpress
+    tag: "latest"
+    pullPolicy: Always
+  replicas: 3
+  configmap:
+    WORDPRESS_DB_HOST: "wp-database-service.wpdb.svc.cluster.local"
+    WORDPRESS_DB_NAME: "wordpress"
+    WORDPRESS_DB_USER: "wordpress"
+    APP_ENV: "dev"
+  service:
+    type: ClusterIP
+    port: 80
+    targetPort: 80

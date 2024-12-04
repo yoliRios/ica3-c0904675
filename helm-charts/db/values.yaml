@@ -1,0 +1,19 @@
+db:
+  name: wp-database
+  labels:
+    id: c0904675
+    app: wp-database-app
+    env: dev
+  image:
+    repository: mariadb
+    tag: "10.6.4-focal"
+    pullPolicy: IfNotPresent
+  replicas: 1
+  configmap:
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: wordpress
+    APP_ENV: dev
+  service:
+    type: ClusterIP
+    port: 3306
+    targetPort: 3306

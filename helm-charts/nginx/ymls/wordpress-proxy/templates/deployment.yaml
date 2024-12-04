@@ -1,0 +1,29 @@
+---
+# Source: wordpress-proxy/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-proxy-deployment
+  labels:
+    app: wp-proxy-app
+    env: dev
+    id: c0904675
+spec:
+  selector:
+    matchLabels:
+      app: wp-proxy-app
+      env: dev
+      id: c0904675
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wp-proxy-app
+        env: dev
+        id: c0904675
+    spec:
+      containers:
+        - name: wp-proxy
+          image: yolimar23/nginx-proxy:latest
+          ports:
+            - containerPort: 80

@@ -1,0 +1,15 @@
+nginx:
+  name: wp-proxy
+  labels:
+    id: c0904675
+    app: wp-proxy-app
+    env: dev
+  image:
+    repository: yolimar23/nginx-proxy
+    tag: "latest"
+    pullPolicy: IfNotPresent
+  replicas: 1
+  service:
+    type: LoadBalancer
+    port: 80
+    targetPort: 80
